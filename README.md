@@ -83,4 +83,15 @@ service networking restart
 ```
 TODO: add Packer scripts to automate the installation and provisioning of the vulnerable VM
 
-
+### 3.2 Connect Console to Terminal
+If you wish to view the virtual machine logs inside the terminal executing the docker-compose command, modify the /etc/default/grub file:
+```
+# uncomment GRUB_TERMINAL=console
+# give non-zero value to GRUB_TIMEOUT=
+# GRUB_CMDLINE_LINUX_DEFAULT="console=ttyS0 earlyprintk=ttyS0 ftrace_dump_on_oops"
+```
+then update grub (from root). Changes are effective after the first restart.
+```
+# update-grub
+# shutdown -h now
+```
