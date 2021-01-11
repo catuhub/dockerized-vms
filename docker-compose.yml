@@ -1,0 +1,25 @@
+version: '3.3'
+services:
+    vulnerable_vm:
+        privileged: true
+        devices:
+          - /dev/kvm
+          - /dev/net/tun
+        cap_add:
+          - NET_ADMIN
+          - SYS_ADMIN
+        volumes:
+          - '/sys/fs/cgroup:/sys/fs/cgroup:rw'
+          - '{IMAGE_PATH_HERE}:/image.img'
+        build: ./dir
+        networks:
+          matrioska:
+            ipv4_address: 192.168.20.2
+
+networks:
+  matrioska:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 192.168.20.0/24
+          gateway: 192.168.20.1

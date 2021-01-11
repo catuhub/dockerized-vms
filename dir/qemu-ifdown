@@ -1,0 +1,2 @@
+#!/bin/bash
+brctl delif virbr0 $1
