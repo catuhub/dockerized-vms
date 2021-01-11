@@ -20,9 +20,9 @@ After a few minutes you can access the virtual machine using ssh
 # ssh <user>@192.168.20.2
 ```
 ## Prerequisites
-Docker
-docker-compose
-KVM
+* Docker
+* docker-compose
+* KVM
 ### 1. Check requirements for KVM
 ```
 # egrep -c '(vmx|svm)' /proc/cpuinfo
