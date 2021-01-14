@@ -78,7 +78,7 @@
     "git_revision": "__unknown_git_revision__",
     "guest_additions_url": "",
     "headless": "",
-    "http_directory": "{{template_dir}}/http",
+    "http_directory": "./http",
     "http_proxy": "{{env `http_proxy`}}",
     "https_proxy": "{{env `https_proxy`}}",
     "hyperv_generation": "2",
