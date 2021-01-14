@@ -10,7 +10,7 @@ services:
           - SYS_ADMIN
         volumes:
           - '/sys/fs/cgroup:/sys/fs/cgroup:rw'
-          - '{IMAGE_PATH_HERE}:/image.img'
+          - './build/{IMAGE_PATH_HERE}:/image.img'
         build: ./dir
         networks:
           matrioska:
