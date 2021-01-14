@@ -81,7 +81,6 @@ and then restart the networking service
 ```
 service networking restart
 ```
-TODO: add Packer scripts to automate the installation and provisioning of the vulnerable VM
 
 ### 3.2 Connect Console to Terminal
 If you wish to view the virtual machine logs inside the terminal executing the docker-compose command, modify the /etc/default/grub file:
@@ -95,3 +94,21 @@ then update grub (from root). Changes are effective after the first restart.
 # update-grub
 # shutdown -h now
 ```
+### 4. Automate VM installation and configuration using Packer
+The steps described above can be automated using the scripts contained in the packer directory.
+#### Prerequisites
+* packer
+* qemu-kvm
+### 4.1 Run packer
+Run the following commands
+```
+# cd packer
+# packer build ubuntu-16.04-amd64.json
+```
+It will download, install and configure a virtual machine with ubuntu server 16.04. The virtual disk built for qemu will be in the "builds" directory. Once the process is completed, repeat the steps in the "Getting Started" section.
+The virtual machine is automatically configured with an ssh account: 
+* username: packer
+* password: packer
+### 4.2 PoC
+The virtual machine built with packer is vulnerable to CVE-2017-16995. After accessed the machine, you can try out the following exploit:
+- https://www.exploit-db.com/exploits/45010
